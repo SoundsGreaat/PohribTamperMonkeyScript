@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pohrib Player
 // @namespace    http://tampermonkey.net/
-// @version      2025-11-26
+// @version      0.0.1
 // @description  Video Player (Persistent Progress Bar, No Blur on Hide)
 // @author       Austin
 // @match        https://pohrib.gybsupport.com/*
@@ -157,14 +157,17 @@
                             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
                             switch(e.key) {
                                 case 'j':
+                                case 'о':
                                 case 'J': player.rewind(60); break;
                                 case 'l':
+                                case 'д':
                                 case 'L': player.forward(60); break;
                                 case 'ArrowRight': player.forward(5); break;
                                 case 'ArrowLeft': player.rewind(5); break;
                                 case 'ArrowUp': e.preventDefault(); player.increaseVolume(0.1); break;
                                 case 'ArrowDown': e.preventDefault(); player.decreaseVolume(0.1); break;
-                                case ' ': e.preventDefault(); player.togglePlay(); break;
+                                case 'л':
+                                case 'space': e.preventDefault(); player.togglePlay(); break;
                                 case 'f': player.fullscreen.toggle(); break;
                                 case 'm': player.muted = !player.muted; break;
                             }

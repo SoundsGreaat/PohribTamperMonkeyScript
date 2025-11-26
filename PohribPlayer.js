@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Pohrib Player
 // @namespace    http://tampermonkey.net/
-// @version      0.0.1
+// @version      0.0.1b
 // @description  Video Player (Persistent Progress Bar, No Blur on Hide)
 // @author       Austin
 // @match        https://pohrib.gybsupport.com/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=premium.gotyourbacksupport.com
 // @run-at       document-end
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/PohribPlayer.js

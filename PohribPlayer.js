@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         Pohrib Player
 // @namespace    http://tampermonkey.net/
-// @version      2025-11-25
-// @description  Video Player for Pohrib
-// @author       You
+// @version      2025-11-26
+// @description  Video Player (Persistent Progress Bar, No Blur on Hide)
+// @author       Austin
 // @match        https://pohrib.gybsupport.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
 // @run-at       document-end
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/PohribPlayer.js
+// @downloadURL  https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/PohribPlayer.js
 // ==/UserScript==
 
 (function() {
@@ -49,12 +51,33 @@
                 bottom: auto !important;
                 left: 0 !important;
                 right: 0 !important;
+                transition: padding 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease !important;
+                backdrop-filter: blur(10px);
             }
 
             .plyr--video.plyr--hide-controls .plyr__controls {
-                transform: translateY(-100%) !important;
+                transform: translateY(0) !important;
+                opacity: 1 !important;
+                background: transparent !important;
+                pointer-events: none;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+
+                backdrop-filter: none !important;
+            }
+
+            .plyr--video.plyr--hide-controls .plyr__controls > .plyr__control,
+            .plyr--video.plyr--hide-controls .plyr__controls > .plyr__time,
+            .plyr--video.plyr--hide-controls .plyr__controls > .plyr__volume,
+            .plyr--video.plyr--hide-controls .plyr__controls > button {
                 opacity: 0;
                 pointer-events: none;
+            }
+
+            .plyr--video.plyr--hide-controls .plyr__controls .plyr__progress {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(-10px);
             }
 
             .plyr__tooltip {
@@ -81,18 +104,13 @@
             .plyr__control { transition: all 0.2s; }
             .plyr__control:hover { color: #fff; }
 
-            .plyr__menu__container .plyr__control {
-                 color: #fff;
-            }
-            .plyr__menu__container .plyr__control:hover {
-                 color: #fff;
-            }
+            .plyr__menu__container .plyr__control { color: #fff; }
+            .plyr__menu__container .plyr__control:hover { color: #fff; }
 
             .plyr__menu__container { background: rgba(0,0,0,0.95); border-radius: 8px; }
             .plyr--full-ui input[type=range] { color: #00b3ff; }
             .plyr__progress__buffer { color: rgba(255,255,255,0.3); }
             .plyr__volume { display: none;}
-            .plyr--video .plyr__controls { backdrop-filter: blur(10px); }
         `;
         document.head.appendChild(style);
 
@@ -138,6 +156,10 @@
                         document.addEventListener('keydown', (e) => {
                             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
                             switch(e.key) {
+                                case 'j':
+                                case 'J': player.rewind(60); break;
+                                case 'l':
+                                case 'L': player.forward(60); break;
                                 case 'ArrowRight': player.forward(5); break;
                                 case 'ArrowLeft': player.rewind(5); break;
                                 case 'ArrowUp': e.preventDefault(); player.increaseVolume(0.1); break;
@@ -148,7 +170,7 @@
                             }
                         });
 
-                        console.log('✅ Top Controls + Fixed Tooltips + Fixed Menu activated!');
+                        console.log('✅ Persistent Progress Bar (No Blur) activated!');
                     });
                 }
             }, 500);

@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Auto Click Request Button
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
-// @description  try to take over the world!
+// @version      1.0.2
+// @description  Automatically clicks the request button in the file access modal on Pohrib
 // @author       Austin
 // @match        https://pohrib.gybsupport.com:444/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=gybsupport.com

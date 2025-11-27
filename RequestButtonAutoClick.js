@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Auto Click Request Button
+// @name         Auto Click Request Button & Unlock Icon
 // @namespace    http://tampermonkey.net/
-// @version      1.0.2
-// @description  Automatically clicks the request button in the file access modal on Pohrib
+// @version      1.0.3
+// @description  Automatically clicks request and updates lock icon on Pohrib
 // @author       Austin
 // @match        https://pohrib.gybsupport.com:444/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=gybsupport.com
@@ -20,7 +20,7 @@
         if (typeof $ === 'undefined') return;
 
         const $modal = $('#requestFileAccessModal');
-        const $fileName = $('#accessModalFileName');
+        const $fileNameElement = $('#accessModalFileName');
         const $btn = $('.requestFileAccessModalRequestButton');
 
         if (!$modal.is(':visible')) {
@@ -30,7 +30,9 @@
 
         if (hasClicked) return;
 
-        if ($fileName.text().trim().length === 0) {
+        let currentFileName = $fileNameElement.text().trim();
+
+        if (currentFileName.length === 0) {
             return;
         }
 
@@ -38,12 +40,29 @@
             hasClicked = true;
 
             $btn.trigger('click');
-
             setTimeout(() => {
                 if ($btn[0]) $btn[0].click();
             }, 50);
+
+            updateLockIcon(currentFileName);
         }
 
     }, 300);
+
+    function updateLockIcon(fileName) {
+        let safeFileName = fileName.replace(/"/g, '\\"');
+        let $lockLink = $('a.access_button[file_name="' + safeFileName + '"]');
+
+        if ($lockLink.length > 0) {
+            $lockLink.attr('access_status', 'allowed');
+            $lockLink.attr('title', 'Access Granted');
+
+            let $icon = $lockLink.find('i');
+
+            if ($icon.hasClass('fa-lock')) {
+                $icon.removeClass('fa-lock').addClass('fa-unlock');
+            }
+        }
+    }
 
 })();

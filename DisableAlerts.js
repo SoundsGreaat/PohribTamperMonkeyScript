@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Disable Alerts
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Disables alert pop-ups on the Pohrib site
 // @author       Austin
 // @match        https://pohrib.gybsupport.com/*
@@ -9,10 +9,10 @@
 // @run-at       document-end
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/DisableAlerts.js
-// @updateURL    https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/DisableAlerts.js
+// @downloadURL  https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/DisableAlerts.js
 // ==/UserScript==
 
-window.alert = function(message) {
+window.alert = function (message) {
     console.log("Hidden alert: " + message);
     return true;
 };

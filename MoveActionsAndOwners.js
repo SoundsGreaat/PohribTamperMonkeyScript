@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Move Actions & Owner to Left
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Move Actions and Owner columns to the left side of the table
 // @author       Austin
 // @match        https://pohrib.gybsupport.com:444/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=gybsupport.com
 // @updateURL    https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/MoveActionsAndOwners.js
-// @updateURL    https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/MoveActionsAndOwners.js
+// @downloadURL  https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/MoveActionsAndOwners.js
 // @grant        none
 // ==/UserScript==
 

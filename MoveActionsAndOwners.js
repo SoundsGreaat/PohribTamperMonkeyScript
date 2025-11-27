@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Move Actions & Owner to Left
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Move Actions and Owner columns to the left side of the table
 // @author       Austin
 // @match        https://pohrib.gybsupport.com:444/*
@@ -38,7 +38,7 @@
         }
 
         theadRow.insertBefore(actionsTh, theadRow.children[1]);
-        theadRow.insertBefore(ownerTh, theadRow.children[2]);
+        theadRow.insertBefore(ownerTh, theadRow.children[3]);
 
 
         const rows = table.querySelectorAll('tbody tr');
@@ -49,7 +49,7 @@
 
             if (actionsTd && ownerTd) {
                 row.insertBefore(actionsTd, row.children[1]);
-                row.insertBefore(ownerTd, row.children[2]);
+                row.insertBefore(ownerTd, row.children[3]);
             }
         });
     }

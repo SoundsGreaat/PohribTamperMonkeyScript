@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto Click Request Button & Unlock Icon
 // @namespace    http://tampermonkey.net/
-// @version      1.0.3
+// @version      1.0.4
 // @description  Automatically clicks request and updates lock icon on Pohrib
 // @author       Austin
 // @match        https://pohrib.gybsupport.com:444/*
@@ -32,17 +32,10 @@
 
         let currentFileName = $fileNameElement.text().trim();
 
-        if (currentFileName.length === 0) {
-            return;
-        }
-
-        if ($btn.length > 0 && !$btn.prop('disabled')) {
+        if (currentFileName.length > 0 && $btn.length > 0 && !$btn.prop('disabled')) {
             hasClicked = true;
 
-            $btn.trigger('click');
-            setTimeout(() => {
-                if ($btn[0]) $btn[0].click();
-            }, 50);
+            $btn[0].click();
 
             updateLockIcon(currentFileName);
         }

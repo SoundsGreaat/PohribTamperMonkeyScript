@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pohrib Player
 // @namespace    http://tampermonkey.net/
-// @version      0.0.1b
+// @version      0.0.2
 // @description  Video Player (Persistent Progress Bar, No Blur on Hide)
 // @author       Austin
 // @match        https://pohrib.gybsupport.com/*
@@ -128,7 +128,7 @@
                                 'settings', 'pip', 'fullscreen'
                             ],
                             settings: ['captions', 'quality', 'speed', 'loop'],
-                            speed: { selected: 1, options: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3] },
+                            speed: { selected: 1, options: [0.25, 0.5, 0.75, 1, 1.5, 1.75, 2, 2.5, 3, 4, 5] },
                             keyboard: { focused: true, global: true },
                             tooltips: { controls: true, seek: true },
                             captions: { active: false, language: 'auto' },

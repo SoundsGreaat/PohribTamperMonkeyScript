@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Modern UI
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.0.1
 // @description  Restyles file manager.
 // @author       Austin
 // @match        https://pohrib.gybsupport.com:444/*
 // @grant        GM_addStyle
 // @run-at       document-start
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=gybsupport.com
 // @updateURL    https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/ModernUI.js
 // @downloadURL  https://raw.githubusercontent.com/SoundsGreaat/PohribTamperMonkeyScript/refs/heads/main/ModernUI.js
 // ==/UserScript==

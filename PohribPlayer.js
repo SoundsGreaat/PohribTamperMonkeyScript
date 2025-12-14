@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Pohrib Player
 // @namespace    http://tampermonkey.net/
-// @version      0.0.2
-// @description  Video Player (Persistent Progress Bar, No Blur on Hide)
+// @version      1.0.0
+// @description  Video Player (Persistent Progress Bar, No Blur on Hide, Button in Corner)
 // @author       Austin
 // @match        https://pohrib.gybsupport.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=premium.gotyourbacksupport.com
@@ -40,6 +40,12 @@
                 background: rgba(255,255,255,0.95);
                 color: #000;
                 padding: 20px;
+                position: absolute !important;
+                top: auto !important;
+                right: auto !important;
+                bottom: 20px !important;
+                left: 20px !important;
+                transform: none !important;
             }
             .plyr__control--overlaid:hover { background: #fff; }
 
@@ -62,7 +68,6 @@
                 pointer-events: none;
                 padding-top: 0 !important;
                 padding-bottom: 0 !important;
-
                 backdrop-filter: none !important;
             }
 
